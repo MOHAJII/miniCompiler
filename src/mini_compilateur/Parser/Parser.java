@@ -1,8 +1,7 @@
 package mini_compilateur.Parser;
 
-import org.w3c.dom.Node;
-
-import java.util.List;
+import mini_compilateur.Lexer.Token;
+import mini_compilateur.Lexer.TokenType;
 
 public class Parser {
     private final TokenStream tokenStream;
@@ -11,6 +10,18 @@ public class Parser {
         this.tokenStream = tokenStream;
     }
 
+    public void parse() {
+        parseExpression();
+    }
+
+    private void parseExpression()  {
+        parseTerme();
+    }
+
+    private void parseTerme() {
+        Token token = tokenStream.getCurrentToken();
+        tokenStream.advance();
+    }
 
 
 }

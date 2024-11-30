@@ -3,13 +3,6 @@ package mini_compilateur.Lexer;
 import java.util.*;
 
 public class Lexer {
-    private final String EQUAL = "EQUAL";
-    private final String OPERAND = "OPERAND";
-    private final String CONSTANT = "CONSTANT";
-    private final String OPERATOR = "OPERATOR";
-    private final String OPENPARENTHESE = "OPENPARENTHESE";
-    private final String CLOSEPARENTHESE = "CLOSEPARENTHESE";
-
     private final String expression;
     private final int expressionLength;
 
@@ -32,21 +25,19 @@ public class Lexer {
             if (Arrays.asList(' ', '\r', '\t').contains(currentChar)) {
                 currentIndex++;
             } else if (Character.isDigit(currentChar)) {
-                tokens.add(new Token(CONSTANT, getDigits()));
+                tokens.add(new Token(TokenType.CONSTANT, getDigits()));
             } else if (currentChar == '=') {
-                tokens.add(new Token(EQUAL, Character.toString(currentChar)));
+                tokens.add(new Token(TokenType.EQUAL, Character.toString(currentChar)));
                 currentIndex++;
             } else if (currentChar == '(') {
-                tokens.add(new Token(OPENPARENTHESE, "("));
+                tokens.add(new Token(TokenType.OPENPARENTHESE, "("));
                 currentIndex++;
             } else if (currentChar == ')') {
-                tokens.add(new Token(CLOSEPARENTHESE, ")"));
+                tokens.add(new Token(TokenType.CLOSEPARENTHESE, ")"));
                 currentIndex++;
             } else if (Arrays.asList('*', '+', '/', '-').contains(currentChar)) {
-                tokens.add(new Token(OPERATOR, Character.toString(currentChar)));
+                tokens.add(new Token(TokenType.OPERATOR, Character.toString(currentChar)));
                 currentIndex++;
-            } else if (Character.isLetter(currentChar)) {
-                tokens.add((new Token(OPERAND, getLetters())));
             } else {
                 System.out.println("Char not found");
                 break;
@@ -54,7 +45,7 @@ public class Lexer {
         }
     }
 
-    private List<Token> getTokens() {
+    public List<Token> getTokens() {
         return tokens;
     }
 

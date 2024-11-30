@@ -23,4 +23,8 @@ public class TokenStream {
     public boolean isAtEnd() {
         return position >= tokens.size();
     }
+
+    public List<Token> getTokens() {
+        return tokens;
+    }
 }

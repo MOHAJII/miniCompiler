@@ -2,15 +2,15 @@ package mini_compilateur.Lexer;
 
 
 public class Token {
-    private final String type;
+    private final TokenType type;
     private final String value;
 
-    public Token(String type, String value) {
+    public Token(TokenType type, String value) {
         this.type = type;
         this.value = value;
     }
 
-    public String getType() {
+    public TokenType getType() {
         return type;
     }
 
